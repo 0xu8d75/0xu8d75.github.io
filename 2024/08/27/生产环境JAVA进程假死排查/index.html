@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -79,15 +79,17 @@
 
 
 
-<meta name="description" content="网络，JAVA编程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="0xu8d75的个人博客">
-<meta property="og:url" content="https://0xu8d75.github.io/index.html">
+<meta name="description" content="1.查看cpu信息top  2.打印对象的数量和占用内存情况jmap -histo:live 进程id | head -n 50  3.查看全连接队列ss -lnt  4.查看全连接队列溢出情况（隔一段执行一次）netstat -s | egrep &quot;listen|LISTEN&quot;  5.查看gcjstat -gcutil 进程id 1s  6.查看cpu高线程idtop -p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生产环境JAVA进程假死排查">
+<meta property="og:url" content="https://0xu8d75.github.io/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/index.html">
 <meta property="og:site_name" content="0xu8d75的个人博客">
-<meta property="og:description" content="网络，JAVA编程">
+<meta property="og:description" content="1.查看cpu信息top  2.打印对象的数量和占用内存情况jmap -histo:live 进程id | head -n 50  3.查看全连接队列ss -lnt  4.查看全连接队列溢出情况（隔一段执行一次）netstat -s | egrep &quot;listen|LISTEN&quot;  5.查看gcjstat -gcutil 进程id 1s  6.查看cpu高线程idtop -p">
 <meta property="og:locale">
+<meta property="article:published_time" content="2024-08-27T08:34:01.000Z">
+<meta property="article:modified_time" content="2024-08-27T08:47:54.341Z">
 <meta property="article:author" content="0xu8d75">
-<meta property="article:tag" content="网络，JAVA，编程">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://0xu8d75.github.io/"/>
+  <link rel="canonical" href="https://0xu8d75.github.io/2024/08/27/生产环境JAVA进程假死排查/"/>
 
 
 
 
 
-  <title>0xu8d75的个人博客</title>
+  <title>生产环境JAVA进程假死排查 | 0xu8d75的个人博客</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,175 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/08/27/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="0xu8d75的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/08/27/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" itemprop="url">网络问题排查</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-08-27T16:43:05+08:00">
-                2024-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><pre><code>tcpdump常用参数
--i：指定要监听的网络接口。
--n：不解析主机名，直接显示 IP 地址。
--nn：不解析主机名和端口号，直接显示 IP 地址和端口号。
--s：指定捕获的每个数据包的字节数，默认是 68 字节，通常设置为 0 表示捕获整个数据包。
--c：指定捕获的数据包数量。
--w：将捕获的数据包写入文件。
--r：从文件读取数据包进行分析。
--v, -vv, -vvv：增加输出的详细程度。
--A：以 ASCII 格式打印数据包的内容。
--X：以十六进制和 ASCII 格式打印数据包的内容。
-
-tcpdump -i eth0 -w capture.pcap  捕获 eth0 接口上所有流量并且写入文件capture.pcap
-tcpdump -i eth0 &#39;tcp port 80&#39;    捕获 eth0 接口上所有 TCP 端口为 80 的流量（HTTP）
-tcpdump -i eth0 host 192.168.1.1 捕获 eth0 接口上所有与 IP 地址 192.168.1.1 相关的所有流量
-tcpdump -i eth0 src 192.168.1.1  捕获 eth0 接口上所有源 IP 地址为 192.168.1.1 的所有流量
-tcpdump -i eth0 dst 192.168.1.1  捕获 eth0 接口上所有目的 IP 地址为 192.168.1.1 的所有流量
-tcpdump -i eth0 -vv              以详细模式显示 eth0 接口上的所有流量
-</code></pre>
-<h3 id="TCP相关参数"><a href="#TCP相关参数" class="headerlink" title="TCP相关参数"></a>TCP相关参数</h3><pre><code>0代表关闭  1代表开启
-#ip地址转发
-net.ipv4.ip_forward = 0
-#防止syn flood攻击（没有最大长度，校验通过就会进入全连接队列）
-net.ipv4.tcp_syncookies = 1
-#所允许存在time_wait状态的最大数值，超过则立刻被清楚并且警告。
-net.ipv4.tcp_max_tw_buckets = 10000
-#接收方能告诉发送方哪些报文段丢失，哪些报文段重传了，哪些报文段已经提前收到等信息
-net.ipv4.tcp_sack = 1
-#syn（半连接）队列的最大长度（还取决于其它参数）
-net.ipv4.tcp_max_syn_backlog = 511
-#添加时间戳（NAT环境开启多台服务器公用同一个时间戳可能有问题）
-net.ipv4.tcp_timestamps = 0
-#作为服务端时syn、ack重传次数
-net.ipv4.tcp_synack_retries = 1
-#作为客户端时syn重传次数
-net.ipv4.tcp_syn_retries = 1
-#主动关闭连接TIME_WAIT 状态回收(NAT环境可能有问题)
-net.ipv4.tcp_tw_recycle = 1
-#主动关闭连接TIME_WAIT 状态重用
-net.ipv4.tcp_tw_reuse = 1
-#全连接队列满了之后回复reset报文
-net.ipv4.tcp_abort_on_overflow = 1
-#全连接队列大小（还取决于其它参数）
-net.core.somaxconn = 511
-# TIME_WAIT超时时间，默认是60s 
-net.ipv4.tcp_fin_timeout = 10 
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -435,9 +270,7 @@ net.ipv4.tcp_fin_timeout = 10
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/" itemprop="url">生产环境JAVA进程假死排查</a></h1>
+          <h1 class="post-title" itemprop="name headline">生产环境JAVA进程假死排查</h1>
         
 
         <div class="post-meta">
@@ -487,9 +320,7 @@ net.ipv4.tcp_fin_timeout = 10
       
 
       
-        
-          
-            <h3 id="1-查看cpu信息"><a href="#1-查看cpu信息" class="headerlink" title="1.查看cpu信息"></a>1.查看cpu信息</h3><pre><code>top
+        <h3 id="1-查看cpu信息"><a href="#1-查看cpu信息" class="headerlink" title="1.查看cpu信息"></a>1.查看cpu信息</h3><pre><code>top
 </code></pre>
 <h3 id="2-打印对象的数量和占用内存情况"><a href="#2-打印对象的数量和占用内存情况" class="headerlink" title="2.打印对象的数量和占用内存情况"></a>2.打印对象的数量和占用内存情况</h3><pre><code>jmap -histo:live 进程id | head -n 50
 </code></pre>
@@ -523,8 +354,6 @@ if [ -r /usr/sbin/lsof ]; then
 /usr/sbin/lsof -p $PID &gt; $DATE_DIR/lsof-$PID.dump
 </code></pre>
 
-          
-        
       
     </div>
     
@@ -539,146 +368,40 @@ if [ -r /usr/sbin/lsof ]; then
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/08/27/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="0xu8d75的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/08/27/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-08-27T09:55:30+08:00">
-                2024-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2024/08/27/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2024/08/27/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" rel="prev" title="网络问题排查">
+                网络问题排查 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -688,10 +411,11 @@ if [ -r /usr/sbin/lsof ]; then
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -699,6 +423,10 @@ if [ -r /usr/sbin/lsof ]; then
 
 
           
+
+  
+
+
 
         </div>
         
@@ -719,8 +447,17 @@ if [ -r /usr/sbin/lsof ]; then
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -771,6 +508,22 @@ if [ -r /usr/sbin/lsof ]; then
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8Bcpu%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">1.查看cpu信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%89%93%E5%8D%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E9%87%8F%E5%92%8C%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%83%85%E5%86%B5"><span class="nav-number">2.</span> <span class="nav-text">2.打印对象的数量和占用内存情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">3.查看全连接队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8B%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E6%BA%A2%E5%87%BA%E6%83%85%E5%86%B5%EF%BC%88%E9%9A%94%E4%B8%80%E6%AE%B5%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">4.查看全连接队列溢出情况（隔一段执行一次）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9F%A5%E7%9C%8Bgc"><span class="nav-number">5.</span> <span class="nav-text">5.查看gc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%9F%A5%E7%9C%8Bcpu%E9%AB%98%E7%BA%BF%E7%A8%8Bid"><span class="nav-number">6.</span> <span class="nav-text">6.查看cpu高线程id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%9F%A5%E7%9C%8B%E7%BA%BF%E7%A8%8B%E5%BF%AB%E7%85%A7"><span class="nav-number">7.</span> <span class="nav-text">7.查看线程快照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E6%89%A7%E8%A1%8Cdump%E8%84%9A%E6%9C%AC"><span class="nav-number">8.</span> <span class="nav-text">8.执行dump脚本</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -904,6 +657,10 @@ if [ -r /usr/sbin/lsof ]; then
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
