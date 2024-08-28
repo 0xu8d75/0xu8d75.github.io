@@ -370,6 +370,24 @@ net.core.somaxconn = 511
 # TIME_WAIT超时时间，默认是60s 
 net.ipv4.tcp_fin_timeout = 10 
 </code></pre>
+<h3 id="网络问题排查"><a href="#网络问题排查" class="headerlink" title="网络问题排查"></a>网络问题排查</h3><pre><code>netstat -s
+XXX times the listen queue of a socket overflowed  overflowed代表accept全连接队列溢出
+XXX SYNs to LISTEN sockets dropped                 droped代表syn半连接队列溢出（accept全连接队列满droped也会增大，droped和overflowed一致的话应该是全连接队列溢出）
+</code></pre>
+<hr>
+<pre><code>accept队列的大小取决于：min(backlog, somaxconn) 
+syn队列的大小取决于：max(64, /proc/sys/net/ipv4/tcp_max_syn_backlog)
+</code></pre>
+<hr>
+<pre><code>ss -lnt  
+-l：只显示处于“监听”状态的套接字
+-n：以数字形式显示地址和端口号
+-t：只显示TCP协议的套接字
+
+监听状态下 Send-Q 表示accept队列最大值，Recv-Q表示accept队列当前使用了多少
+非监听状态下 Send-Q 表示已发送但未收到确认的字节数，Recv-Q表示已收到但未被应用进程读取的字节数
+</code></pre>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a target="_blank" rel="noopener" href="https://www.emqx.com/zh/blog/emqx-performance-tuning-tcp-syn-queue-and-accept-queue">TCP SYN 队列与 Accept 队列</a><br><br><a target="_blank" rel="noopener" href="https://xiaolincoding.com/network/#%E8%A6%81%E6%80%8E%E4%B9%88%E9%98%85%E8%AF%BB">图解网络</a></p>
 
           
         
