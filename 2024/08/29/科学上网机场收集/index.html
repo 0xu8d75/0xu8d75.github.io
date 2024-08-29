@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="查看cpu信息top  打印对象的数量和占用内存情况jmap -histo:live 进程id | head -n 50  查看全连接队列ss -lnt  查看全连接队列溢出情况（隔一段执行一次）netstat -s | egrep &quot;listen|LISTEN&quot;  查看gcjstat -gcutil 进程id 1s  查看cpu高线程idtop -p 进程id -H  查看线">
+<meta name="description" content="FANminiworld&#x2F;FANQIANGSSRWEB:  abcfyk&#x2F;impatriot 翻墙党 Mass VPS hosting on Enterprise equipment - BandwagonHost VPS getlantern&#x2F;lantern:  PandaVPN CordCloud - 高速网络服务 Dler Cloud Shopping Cart">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生产环境JAVA进程假死排查">
-<meta property="og:url" content="https://0xu8d75.github.io/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/index.html">
+<meta property="og:title" content="科学上网机场收集">
+<meta property="og:url" content="https://0xu8d75.github.io/2024/08/29/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%BA%E5%9C%BA%E6%94%B6%E9%9B%86/index.html">
 <meta property="og:site_name" content="0xu8d75的个人博客">
-<meta property="og:description" content="查看cpu信息top  打印对象的数量和占用内存情况jmap -histo:live 进程id | head -n 50  查看全连接队列ss -lnt  查看全连接队列溢出情况（隔一段执行一次）netstat -s | egrep &quot;listen|LISTEN&quot;  查看gcjstat -gcutil 进程id 1s  查看cpu高线程idtop -p 进程id -H  查看线">
+<meta property="og:description" content="FANminiworld&#x2F;FANQIANGSSRWEB:  abcfyk&#x2F;impatriot 翻墙党 Mass VPS hosting on Enterprise equipment - BandwagonHost VPS getlantern&#x2F;lantern:  PandaVPN CordCloud - 高速网络服务 Dler Cloud Shopping Cart">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-08-27T08:34:01.000Z">
-<meta property="article:modified_time" content="2024-08-29T02:40:20.878Z">
+<meta property="article:published_time" content="2024-08-29T03:27:10.000Z">
+<meta property="article:modified_time" content="2024-08-29T03:29:08.972Z">
 <meta property="article:author" content="0xu8d75">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="网络，JAVA，编程">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://0xu8d75.github.io/2024/08/27/生产环境JAVA进程假死排查/"/>
+  <link rel="canonical" href="https://0xu8d75.github.io/2024/08/29/科学上网机场收集/"/>
 
 
 
 
 
-  <title>生产环境JAVA进程假死排查 | 0xu8d75的个人博客</title>
+  <title>科学上网机场收集 | 0xu8d75的个人博客</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/">
+    <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/08/29/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%BA%E5%9C%BA%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">生产环境JAVA进程假死排查</h1>
+          <h1 class="post-title" itemprop="name headline">科学上网机场收集</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-08-27T16:34:01+08:00">
-                2024-08-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-08-29T11:27:10+08:00">
+                2024-08-29
               </time>
             
 
@@ -320,36 +320,67 @@
       
 
       
-        <h3 id="查看cpu信息"><a href="#查看cpu信息" class="headerlink" title="查看cpu信息"></a>查看cpu信息</h3><pre><code>top
-</code></pre>
-<h3 id="打印对象的数量和占用内存情况"><a href="#打印对象的数量和占用内存情况" class="headerlink" title="打印对象的数量和占用内存情况"></a>打印对象的数量和占用内存情况</h3><pre><code>jmap -histo:live 进程id | head -n 50
-</code></pre>
-<h3 id="查看全连接队列"><a href="#查看全连接队列" class="headerlink" title="查看全连接队列"></a>查看全连接队列</h3><pre><code>ss -lnt
-</code></pre>
-<h3 id="查看全连接队列溢出情况（隔一段执行一次）"><a href="#查看全连接队列溢出情况（隔一段执行一次）" class="headerlink" title="查看全连接队列溢出情况（隔一段执行一次）"></a>查看全连接队列溢出情况（隔一段执行一次）</h3><pre><code>netstat -s | egrep &quot;listen|LISTEN&quot;
-</code></pre>
-<h3 id="查看gc"><a href="#查看gc" class="headerlink" title="查看gc"></a>查看gc</h3><pre><code>jstat -gcutil 进程id 1s
-</code></pre>
-<h3 id="查看cpu高线程id"><a href="#查看cpu高线程id" class="headerlink" title="查看cpu高线程id"></a>查看cpu高线程id</h3><pre><code>top -p 进程id -H
-</code></pre>
-<h3 id="查看线程快照"><a href="#查看线程快照" class="headerlink" title="查看线程快照"></a>查看线程快照</h3><pre><code>jstack 进程id | grep -A 100 nid=线程id（十六进制  工具：&#39;printf &quot;0x%x\n&quot; 线程id&#39; 例如0x1802）
-</code></pre>
-<h3 id="获取进程相关信息"><a href="#获取进程相关信息" class="headerlink" title="获取进程相关信息"></a>获取进程相关信息</h3><pre><code>jstack 进程id &gt; jstack.dump 2&gt;&amp;1 #获取Java线程的堆栈跟踪信息
-jinfo 进程id &gt; jinfo.dump 2&gt;&amp;1 #获取Java进程的配置信息。
-jstat -gcutil 进程id &gt; jstat-gcutil.dump 2&gt;&amp;1 #获取Java垃圾回收的使用情况。
-jstat -gccapacity 进程id &gt; jstat-gccapacity.dump 2&gt;&amp;1 #获取Java垃圾回收的容量信息。
-jmap 进程id &gt; jmap.dump 2&gt;&amp;1 #获取 Java 堆的基本信息
-jmap -heap 进程id &gt; jmap-heap.dump 2&gt;&amp;1 #获取 Java 堆的详细信息
-jmap -histo 进程id &gt; jmap-histo.dump 2&gt;&amp;1 #获取 Java 堆中对象的分布情况（即对象的数量和大小）
-/usr/sbin/lsof -p 进程id &gt; lsof.dump #列出与指定进程相关的所有打开文件
-</code></pre>
-<h3 id="dump堆"><a href="#dump堆" class="headerlink" title="dump堆"></a>dump堆</h3><pre><code>jmap -dump:live,format=b,file=core.hprof 进程id
-</code></pre>
-<h3 id="堆太大dump不出来文件怎么办？"><a href="#堆太大dump不出来文件怎么办？" class="headerlink" title="堆太大dump不出来文件怎么办？"></a>堆太大dump不出来文件怎么办？</h3><pre><code>ulimit -c unlimited #先解除coredump文件限制
-gcore 进程id #生成coredump文件
-jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件转储为java dump文件
-</code></pre>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2020/01/04/%E8%8E%B7%E5%8F%96%E4%B8%80%E7%9B%B4FullGC%E4%B8%8B%E7%9A%84java%E8%BF%9B%E7%A8%8BHeapDump%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">获取一直FullGC下的java进程HeapDump的小技巧</a>	</p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/FANminiworld/FANQIANGSSRWEB">FANminiworld&#x2F;FANQIANGSSRWEB: </a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/abcfyk/impatriot">abcfyk&#x2F;impatriot</a></p>
+<p><a target="_blank" rel="noopener" href="https://fanqiangdang.com/">翻墙党</a></p>
+<p><a target="_blank" rel="noopener" href="https://bwh88.net/">Mass VPS hosting on Enterprise equipment - BandwagonHost VPS</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/getlantern/lantern">getlantern&#x2F;lantern: </a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pandavpnpro.com/sale">PandaVPN</a></p>
+<p><a target="_blank" rel="noopener" href="http://cordc.net/">CordCloud - 高速网络服务</a></p>
+<p><a target="_blank" rel="noopener" href="https://dlercloud.com/auth/login">Dler Cloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.amytele.net/cart.php">Shopping Cart - AmyTelecom</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.paofu.cloud/auth/register">注册 — 泡芙云</a></p>
+<p><a target="_blank" rel="noopener" href="https://my.cloudnx.cc/cart.php#">购物车 - KyCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://一元机场.com/#/register">一元机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://ylimly.com/#/register">YlimlyCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://性价比机场.com/#/register">性价比机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.eevpn.com/#/login">EEVPN</a></p>
+<p><a target="_blank" rel="noopener" href="https://cn.tgstat.com/">Telegram channels and groups catalog &#x2F; China — TGStat</a></p>
+<p><a target="_blank" rel="noopener" href="https://user.bafang.vip/#/login">八方云</a></p>
+<p><a target="_blank" rel="noopener" href="https://w6w.shop/#/register">自由飞-加速器</a></p>
+<p><a target="_blank" rel="noopener" href="https://xsus.buzz/#pics">XSUS</a></p>
+<p><a target="_blank" rel="noopener" href="https://portal.shadowsocks.nz/index.php">首页 - Shadowsocks.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.elkcloud.top/">ELK CLOUD</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xlinkworld.me/clientarea.php">客户中心 - XlinkWorld</a></p>
+<p><a target="_blank" rel="noopener" href="https://dashboard.shadowrhythm.xyz/auth/login">SHADOWRHYTHM</a></p>
+<p><a target="_blank" rel="noopener" href="https://starlink.to/#/login">星链计划#STARLINK</a></p>
+<p><a target="_blank" rel="noopener" href="https://ziu.one/#/login">发现新世界</a></p>
+<p><a target="_blank" rel="noopener" href="https://sockboom.bar/">SockBoom</a></p>
+<p><a target="_blank" rel="noopener" href="https://sub.198466.xyz/#pricing">垃圾场加速器</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tgcloud.top/#/login">TG-Cloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.miyun.la/">首页｜觅云</a></p>
+<p><a target="_blank" rel="noopener" href="https://huacloud.dev/">FlowerCloud - 国际网络加速服务，致力于提高网络质量！</a></p>
+<p><a target="_blank" rel="noopener" href="https://fuqing.cz/">门户首页 - WestData</a></p>
+<p><a target="_blank" rel="noopener" href="https://stentvessel.shop/">YToo - 国际网络加速服务，致力于提高网络质量！</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.fccloud.cc/#/register?code=HrAJKafC">FCCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://tagss01.pro/#/register">TAGInternet - @mes_kwahwai</a></p>
+<p><a target="_blank" rel="noopener" href="https://mojie.buzz/#/login">魔戒.net</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sjlx.win/auth/login">登录 — 世界旅行</a></p>
+<p><a target="_blank" rel="noopener" href="https://dukou.dev/user/login?redirect=/">Dukou</a></p>
+<p><a target="_blank" rel="noopener" href="https://xftld.org/index.php#/login">XFLTD</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.efcloud.net/#/login">EFCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://八方云.com/">八方云网址收藏页</a></p>
+<p><a target="_blank" rel="noopener" href="https://w1.v2free.top/">SS节点、免费V2ray节点|高速V2ray机场翻墙服务-V2free机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://yizhihongxing.org/">一枝红杏 🧱</a></p>
+<p><a target="_blank" rel="noopener" href="https://front.fishport.cloud/#/login">FishPort</a></p>
+<p><a target="_blank" rel="noopener" href="https://赔钱机场.com/#/login">赔钱机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.duyaoss.com/archives/3/">DuyaoSS-机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://bafang.vip/#/register">八方云</a></p>
+<p><a target="_blank" rel="noopener" href="https://user.wssss.shop/#/login">新维生素S</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cordc.net/auth/register">CordCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://readerm.com/auth/login">登录 — SoCloud</a></p>
+<p><a target="_blank" rel="noopener" href="https://p.xflash.cc/#/login">XFLASH</a></p>
+<p><a target="_blank" rel="noopener" href="https://renzhe.cloud/">RenzheCloud 云服务</a></p>
+<p><a target="_blank" rel="noopener" href="https://home.xsus.me/index.php#/login">XSUS</a></p>
+<p><a target="_blank" rel="noopener" href="https://sockboom.shop/">SockBoom</a></p>
+<p><a target="_blank" rel="noopener" href="https://order.yizhihongxing.org/">首页 - 一枝红杏</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.paopao.dog/#/register?code=EONU9Dbw">泡泡Dog - 注册</a></p>
+<p><a target="_blank" rel="noopener" href="https://coo.lol/#/register">COO NETWORK</a></p>
+<p><a target="_blank" rel="noopener" href="https://三分机场.xyz/#/register?code=Q4KiQG2j">用户注册</a></p>
+<p><a target="_blank" rel="noopener" href="https://两元店.com/#/register?code=71ATu84V">两元店</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.leiting.io/">雷霆 - 连接世界 就现在</a></p>
+<p><a target="_blank" rel="noopener" href="https://guolicheng.cc/index.php#/login">🍊果粒橙🍊</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.night-furyx.com/index.php#/register">夜煞云</a></p>
 
       
     </div>
@@ -365,12 +396,6 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-        </div>
-      
 
       
       
@@ -380,8 +405,8 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2024/08/27/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2024/08/29/%E5%B8%B8%E7%9C%8B%E5%8D%9A%E5%AE%A2%E6%94%B6%E9%9B%86/" rel="next" title="常看博客收集">
+                <i class="fa fa-chevron-left"></i> 常看博客收集
               </a>
             
           </div>
@@ -389,10 +414,6 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2024/08/27/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" rel="prev" title="网络问题排查">
-                网络问题排查 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -444,17 +465,8 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,22 +517,6 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bcpu%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">查看cpu信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E9%87%8F%E5%92%8C%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%83%85%E5%86%B5"><span class="nav-number">2.</span> <span class="nav-text">打印对象的数量和占用内存情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">查看全连接队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E6%BA%A2%E5%87%BA%E6%83%85%E5%86%B5%EF%BC%88%E9%9A%94%E4%B8%80%E6%AE%B5%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">查看全连接队列溢出情况（隔一段执行一次）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bgc"><span class="nav-number">5.</span> <span class="nav-text">查看gc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bcpu%E9%AB%98%E7%BA%BF%E7%A8%8Bid"><span class="nav-number">6.</span> <span class="nav-text">查看cpu高线程id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%BA%BF%E7%A8%8B%E5%BF%AB%E7%85%A7"><span class="nav-number">7.</span> <span class="nav-text">查看线程快照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">8.</span> <span class="nav-text">获取进程相关信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dump%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">dump堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%A4%AA%E5%A4%A7dump%E4%B8%8D%E5%87%BA%E6%9D%A5%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">堆太大dump不出来文件怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">11.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
