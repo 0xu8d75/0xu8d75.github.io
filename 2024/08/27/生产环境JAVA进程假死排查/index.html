@@ -316,6 +316,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2024/08/27/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83JAVA%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%8E%92%E6%9F%A5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -476,6 +486,13 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -777,6 +794,43 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: '0xu8d75',
+            repo: 'https://github.com/0xu8d75/0xu8d75.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '27f7c0b89db5432b71ddddaef8074e63c0f22206',
+            
+                client_id: 'Ov23liyc4q8XhwaDB3WL'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
