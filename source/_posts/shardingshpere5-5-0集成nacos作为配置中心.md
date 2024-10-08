@@ -20,7 +20,7 @@ spring:
 /**
  *  自定义配置数据源为nacos获取配置信息
  *  shardingsphere中的rules均为!开头，spring不能解析会报错，先将叹号开头的配置以井号开头将其注释掉，这里再替换回来进行解析
- *  nacos读取出来的每行以\n和shardingsphere解析以系统分隔符结尾不一致也替换一下
+ *  nacos读取出来的每行以\n结尾和shardingsphere解析以系统分隔符结尾不一致也替换一下
  */
 public final class SpringNacosURLLoader implements ShardingSphereURLLoader {
 
