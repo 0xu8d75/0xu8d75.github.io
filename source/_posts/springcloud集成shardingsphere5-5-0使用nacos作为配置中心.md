@@ -1,10 +1,10 @@
 ---
-title: shardingshpere5.5.0集成nacos作为配置中心
+title: spring cloud 中 shardingsphere 集成 nacos 作为配置中心
 date: 2024-10-08 11:13:51
-tags: java shardingshpere nacos
+tags: java spring cloud shardingsphere nacos
 ---
 
-### shardingshpere5.5.0去除了nacos作为配置中心的代码参考源码中相对路径和绝对路径配置进行修改
+### shardingsphere5.5.0去除了nacos作为配置中心的代码参考源码中相对路径和绝对路径配置进行修改
 
 
 ```
