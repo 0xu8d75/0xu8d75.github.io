@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://0xu8d75.github.io/2024/10/08/shardingshpere5-5-0%E9%9B%86%E6%88%90nacos%E4%BD%9C%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</loc>
+    <loc>https://0xu8d75.github.io/2024/10/08/springcloud%E9%9B%86%E6%88%90shardingsphere5-5-0%E4%BD%BF%E7%94%A8nacos%E4%BD%9C%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</loc>
     
     <lastmod>2024-10-11</lastmod>
     
@@ -106,7 +106,7 @@
   </url>
   
   <url>
-    <loc>https://0xu8d75.github.io/tags/java-spring-shardingshpere-nacos/</loc>
+    <loc>https://0xu8d75.github.io/tags/java-spring-cloud-shardingsphere-nacos/</loc>
     <lastmod>2024-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
