@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://0xu8d75.github.io/2024/10/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2024-10-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://0xu8d75.github.io/2024/10/08/springcloud%E9%9B%86%E6%88%90shardingsphere5-5-0%E4%BD%BF%E7%94%A8nacos%E4%BD%9C%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</loc>
     
     <lastmod>2024-10-11</lastmod>
@@ -85,7 +94,7 @@
 
   <url>
     <loc>https://0xu8d75.github.io/</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2024-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -93,21 +102,28 @@
   
   <url>
     <loc>https://0xu8d75.github.io/tags/java/</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0xu8d75.github.io/tags/tcp-ip/</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0xu8d75.github.io/tags/java-spring-cloud-shardingsphere-nacos/</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2024-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://0xu8d75.github.io/tags/AI-%E5%A4%A7%E6%A8%A1%E5%9E%8B-Transformer-PyTorch-%E7%9F%A5%E8%AF%86%E5%BA%93-RAG-%E5%BE%AE%E8%B0%83-%E5%A4%9A%E6%A8%A1%E6%80%81-%E8%92%B8%E9%A6%8F-%E5%89%AA%E6%9E%9D-%E9%87%8F%E5%8C%96-%E6%8E%A8%E7%90%86/</loc>
+    <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

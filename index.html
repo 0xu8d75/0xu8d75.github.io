@@ -282,6 +282,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/10/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="0xu8d75的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/10/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" itemprop="url">AI大模型知识整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-10-29T09:55:12+08:00">
+                2024-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  8 mins.
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="AI大模型知识整理"><a href="#AI大模型知识整理" class="headerlink" title="AI大模型知识整理"></a>AI大模型知识整理</h3><h4 id="神经网络架构"><a href="#神经网络架构" class="headerlink" title="神经网络架构"></a>神经网络架构</h4><pre><code>CNN 卷积神经网络 使用卷积层来提取特征，通常包括池化层和全连接层。
+RNN 递归神经网络 具有循环连接，能够处理序列数据。每个时间步的输出依赖于前一个时间步的状态。
+Transformer 基于自注意力机制，使用编码器-解码器架构。没有循环结构，能够并行处理输入数据。
+</code></pre>
+<h4 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h4><pre><code>开源的深度学习框架，可以调用不同神经网络架构实现大模型
+</code></pre>
+<h4 id="知识库"><a href="#知识库" class="headerlink" title="知识库"></a>知识库</h4><pre><code>私有化数据，提供了可供检索的信息资源，可以是文档、图片等
+</code></pre>
+<h4 id="RAG（Retrieval-Augmented-Generation）检索增强生成"><a href="#RAG（Retrieval-Augmented-Generation）检索增强生成" class="headerlink" title="RAG（Retrieval-Augmented Generation）检索增强生成"></a>RAG（Retrieval-Augmented Generation）检索增强生成</h4><pre><code>利用知识库中的信息来增强生成模型的能力，以生成更准确的回答。通过embedding（存入和查询数据库）将知识库数据存储、检索、回答结合大模型返回结果
+</code></pre>
+<h3 id="微调（Fine-Tuning）"><a href="#微调（Fine-Tuning）" class="headerlink" title="微调（Fine-Tuning）"></a>微调（Fine-Tuning）</h3><pre><code>基于预训练模型（GPT、LLaMA、qwen 等）进行简单训练，学习特定数据
+</code></pre>
+<h3 id="多模态"><a href="#多模态" class="headerlink" title="多模态"></a>多模态</h3><pre><code>通常指的大模型都是基于文本生成文本，要想通过文本生成图片、图片生成文本等非文本数据转化称为多模态
+</code></pre>
+<h3 id="蒸馏"><a href="#蒸馏" class="headerlink" title="蒸馏"></a>蒸馏</h3><pre><code>模型迁移（模型学习模型），降低学习成本
+</code></pre>
+<h3 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h3><pre><code>减少模型参数，降低学习成本
+</code></pre>
+<h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><pre><code>减小精度，降低学习成本
+</code></pre>
+<h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><pre><code>部署后运行模型执行问答
+工具有 ollama、ModelScope，集成多种大模型，可以方便的下载、运行，训练、部署等
+</code></pre>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LGsLCor1NeVq5lDqVx8uQw">大白话讲讲现在的 AI 和一堆乱七八糟的东西都是啥-闪客</a><br><a target="_blank" rel="noopener" href="https://modelscope.cn/">https://modelscope.cn/</a><br><a target="_blank" rel="noopener" href="https://ollama.com/">https://ollama.com/</a><br><a target="_blank" rel="noopener" href="https://bailian.console.aliyun.com/">https://bailian.console.aliyun.com/</a>  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://0xu8d75.github.io/2024/10/08/springcloud%E9%9B%86%E6%88%90shardingsphere5-5-0%E4%BD%BF%E7%94%A8nacos%E4%BD%9C%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1416,7 +1590,7 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1429,7 +1603,7 @@ jmap -dump:live,format=b,file=core.hprof `which java`  core.xxxx #coredump文件
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
